@@ -1,0 +1,7 @@
+﻿services:
+  pbcartaocredito:
+    image: pbcartaocredito
+    build:
+      context: .
+      dockerfile: Dockerfile
+
