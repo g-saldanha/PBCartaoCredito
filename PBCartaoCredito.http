@@ -1,6 +1,3 @@
 @PBCartaoCredito_HostAddress = http://localhost:5144
 
-GET {{PBCartaoCredito_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
+GET {{PBCartaoCredito_HostAddress}}/api/v1/cartoes/acc5dd75-4686-4757-9bde-c5b18537d7b2

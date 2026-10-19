@@ -1,6 +1,6 @@
 using MassTransit;
 using PBCartaoCredito.Data;
-using PBCartaoCredito.Messages;
+using ParanaBanco.Messages;
 
 namespace PBCartaoCredito.Consumers;
 
@@ -16,6 +16,7 @@ public class PropostaGeradaConsumer : IConsumer<PropostaGerada>
     public async Task Consume(ConsumeContext<PropostaGerada> context)
     {
         var mensagem = context.Message;
+        Console.WriteLine($"\n[MS3] ---> RECEBEU evento PropostaGerada! ClienteID: {mensagem.ClienteId} | Score: {mensagem.Score} | Status: {mensagem.Status}");
 
         if (mensagem.Status == "Negado") return;
 
@@ -35,6 +36,7 @@ public class PropostaGeradaConsumer : IConsumer<PropostaGerada>
         {
             _db.Cartoes.AddRange(cartoesGerados);
             await _db.SaveChangesAsync();
+            Console.WriteLine($"[MS3] Processamento concluído! {cartoesGerados.Count} cartão(ões) emitido(s) e salvo(s) na base.\n");
         }
     }
 

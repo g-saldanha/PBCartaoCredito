@@ -65,6 +65,4 @@ cartoesGroup.MapGet("/{clienteId}", async (Guid clienteId, AppDbContext db) =>
     return Results.Ok(cartoes);
 });
 
-app.UseHttpsRedirection();
-
 app.Run();

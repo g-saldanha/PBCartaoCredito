@@ -1,3 +1,3 @@
-namespace PBCartaoCredito.Messages;
+namespace ParanaBanco.Messages;
 
 public record PropostaGerada(Guid ClienteId, Guid PropostaId, int Score, string Status);
