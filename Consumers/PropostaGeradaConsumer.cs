@@ -18,18 +18,22 @@ public class PropostaGeradaConsumer : IConsumer<PropostaGerada>
         var mensagem = context.Message;
         Console.WriteLine($"\n[MS3] ---> RECEBEU evento PropostaGerada! ClienteID: {mensagem.ClienteId} | Score: {mensagem.Score} | Status: {mensagem.Status}");
 
-        if (mensagem.Status == "Negado") return;
+        if (mensagem.Status == "Negado") 
+        {
+            Console.WriteLine("[MS3] Status é 'Negado'. Nenhum cartão será emitido.");
+            return;
+        }
 
         var cartoesGerados = new List<Cartao>();
 
         if (mensagem.Score > 100 && mensagem.Score <= 500)
         {
-            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 500m));
+            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 1000m));
         }
         else if (mensagem.Score > 500)
         {
-            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 1000m));
-            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 2000m));
+            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 5000m));
+            cartoesGerados.Add(CriarCartao(mensagem.ClienteId, 5000m));
         }
 
         if (cartoesGerados.Any())

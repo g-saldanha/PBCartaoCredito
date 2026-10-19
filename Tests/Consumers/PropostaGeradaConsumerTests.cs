@@ -49,7 +49,7 @@ public class PropostaGeradaConsumerTests
 
         var cartoes = await dbContext.Cartoes.Where(c => c.ClienteId == clienteId).ToListAsync();
         Assert.Single(cartoes);
-        Assert.Equal(500m, cartoes.First().Limite);
+        Assert.Equal(1000m, cartoes.First().Limite);
     }
 
     [Fact]
